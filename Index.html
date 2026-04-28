@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arush M K — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b1120;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(59,130,246,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 80%, rgba(99,102,241,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(16,185,129,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deck-wrap {
+  width: 100%;
+  max-width: 660px;
+  position: relative;
+  z-index: 1;
+}
+
+.deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.deck-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.slide-counter {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.slide {
+  display: none;
+  padding: 2.25rem 2.5rem 2rem;
+  min-height: 380px;
+  flex-direction: column;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  position: relative;
+  overflow: hidden;
+  animation: fadeSlide 0.3s ease;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.slide::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide.active { display: flex; }
+
+.accent-bar {
+  position: absolute;
+  top: 0; left: 2.5rem; right: 2.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1, transparent);
+  border-radius: 0 0 2px 2px;
+}
+
+.slide-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.slide-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+.slide-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.75rem;
+}
+
+.stat-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.stat {
+  flex: 1;
+  min-width: 110px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #3b82f6, transparent);
+}
+
+.stat-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.stat-lbl {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 3px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+  background: rgba(59,130,246,0.15);
+  color: #93c5fd;
+  border: 1px solid rgba(59,130,246,0.25);
+  letter-spacing: 0.03em;
+}
+
+.bullet-list { display: flex; flex-direction: column; gap: 12px; }
+
+.bullet {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+}
+
+.dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #3b82f6;
+  flex-shrink: 0;
+  margin-top: 8px;
+  box-shadow: 0 0 6px rgba(59,130,246,0.6);
+}
+
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 5px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.04);
+}
+
+.tag.hi {
+  background: rgba(59,130,246,0.12);
+  border-color: rgba(59,130,246,0.3);
+  color: #93c5fd;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.mini-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 0.9rem 1rem 0.9rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.mini-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, #3b82f6, #6366f1);
+  border-radius: 3px 0 0 3px;
+}
+
+.mini-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 6px;
+}
+
+.mini-card-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+}
+
+.lang-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.lang {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.25);
+  color: #a5b4fc;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  text-decoration: none;
+  color: rgba(255,255,255,0.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+}
+
+.contact-item:hover {
+  background: rgba(59,130,246,0.1);
+  border-color: rgba(59,130,246,0.25);
+  color: #93c5fd;
+}
+
+.contact-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(59,130,246,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon svg { width: 15px; height: 15px; }
+
+strong.emp { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+}
+
+.nav-dots { display: flex; gap: 6px; }
+
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.nav-dot.on {
+  background: #3b82f6;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(59,130,246,0.6);
+}
+
+.nav-btns { display: flex; gap: 8px; }
+
+button.nav-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  padding: 7px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+button.nav-btn:hover {
+  background: rgba(59,130,246,0.15);
+  border-color: rgba(59,130,246,0.35);
+  color: #93c5fd;
+}
+
+@media (max-width: 480px) {
+  .two-col { grid-template-columns: 1fr; }
+  .slide-title { font-size: 24px; }
+  .stat-row { gap: 8px; }
+  .slide { padding: 1.75rem 1.5rem 1.5rem; }
+  .accent-bar { left: 1.5rem; right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck-wrap">
+  <div class="deck-header">
+    <div class="deck-name">Arush M K · Resume</div>
+    <div class="slide-counter" id="counter">1 / 7</div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog" style="width:14.28%"></div></div>
+
+  <div class="slide active" id="s0">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">01 / 07 — Overview</div>
+      <div class="slide-title">Arush M K</div>
+      <div class="slide-sub">Finance & Accounting Graduate · Chennai, India</div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">8.51</div><div class="stat-lbl">CGPA / 10</div></div>
+        <div class="stat"><div class="stat-val">9 mo</div><div class="stat-lbl">Work experience</div></div>
+        <div class="stat"><div class="stat-val">5</div><div class="stat-lbl">Languages spoken</div></div>
+        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">Research projects</div></div>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet"><div class="dot"></div><span>Finance Executive at Hexaware Technologies (Dec 2024 – Aug 2025)</span></div>
+        <div class="bullet"><div class="dot"></div><span>Accounting & Finance graduate from SRM University, May 2025</span></div>
+        <div class="bullet"><div class="dot"></div><span>Hands-on with Oracle ERP Cloud, Excel, and SQL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="s1">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">02 / 07 — Experience</div>
+      <div class="section-tag">Hexaware Technologies</div>
+      <div class="slide-title">Finance Executive</div>
+      <div class="slide-sub">Dec 2024 – Aug 2025 · Chennai</div>
+      <div class="bullet-list">
+        <div class="bullet"><div class="dot"></div><span>Collaborated with project and finance stakeholders on project scoping, creation, and operational support</span></div>
+        <div class="bullet"><div class="dot"></div><span>Reconciliation of project-related financial data using Oracle ERP Cloud and Excel</span></div>
+        <div class="bullet"><div class="dot"></div><span>Built pivot tables, VLOOKUP/XLOOKUP formulas, and reports for data analysis requirements</span></div>
+        <div class="bullet"><div class="dot"></div><span>Tracked and validated financial information for timely SLA closure across internal teams</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="s2">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">03 / 07 — Skills</div>
+      <div class="slide-title">Technical skills</div>
+      <div class="slide-sub">Tools, platforms, and data capabilities</div>
+      <div class="two-col" style="margin-bottom: 1rem;">
+        <div class="mini-card">
+          <div class="mini-card-title">ERP & accounting</div>
+          <div class="mini-card-body">Oracle ERP Cloud · Tally ERP 9 · TMG</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-title">Data & reporting</div>
+          <div class="mini-card-body">SQL · Excel Pivot Tables · VLOOKUP / XLOOKUP · IF formulas</div>
+        </div>
+      </div>
+      <div class="tag-wrap">
+        <div class="tag hi">Oracle ERP Cloud</div>
+        <div class="tag hi">Excel</div>
+        <div class="tag hi">SQL</div>
+        <div class="tag">Tally ERP 9</div>
+        <div class="tag">TMG</div>
+        <div class="tag">Pivot Tables</div>
+        <div class="tag">Financial reconciliation</div>
+        <div class="tag">O2C / Accounts Receivable</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="s3">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">04 / 07 — Research</div>
+      <div class="slide-title">Research projects</div>
+      <div class="slide-sub">Academic and independent research</div>
+      <div class="bullet-list">
+        <div class="bullet"><div class="dot"></div><span><strong class="emp">Dynamics of Stock Market</strong> — Analysing investment strategies & market trends (Mar – Apr 2025)</span></div>
+        <div class="bullet"><div class="dot"></div><span><strong class="emp">Global Scenario of Trade & Development</strong> — International trade analysis (Feb – Mar 2024)</span></div>
+        <div class="bullet"><div class="dot"></div><span><strong class="emp">Evolution & Advancement of the Automobile Industry</strong> — Industry lifecycle study (Dec 2023 – Jan 2024)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="s4">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">05 / 07 — Education</div>
+      <div class="slide-title">Education</div>
+      <div class="slide-sub">Academic background</div>
+      <div class="two-col" style="margin-bottom: 1rem;">
+        <div class="mini-card">
+          <div class="mini-card-title">SRM University</div>
+          <div class="mini-card-body">B.Com — Accounting & Finance<br>CGPA: 8.51 / 10 · May 2025</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-title">MCC Matriculation HSS</div>
+          <div class="mini-card-body">Higher Secondary: 84% · 2022<br>Secondary: 64% · 2020</div>
+        </div>
+      </div>
+      <div class="section-tag" style="margin-bottom:0.6rem;">Internship</div>
+      <div class="bullet-list">
+        <div class="bullet"><div class="dot"></div><span>Operations Intern at SIMS Chennai (Jul 2022) — documentation, scheduling, and customer service in a high-volume environment</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="s5">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">06 / 07 — Languages & Interests</div>
+      <div class="slide-title">Languages spoken</div>
+      <div class="slide-sub">Multilingual across 5 languages</div>
+      <div class="lang-row" style="margin-bottom: 1.75rem;">
+        <div class="lang">English</div>
+        <div class="lang">Tamil</div>
+        <div class="lang">Hindi</div>
+        <div class="lang">Marathi</div>
+        <div class="lang">German</div>
+      </div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:13px; color:rgba(255,255,255,0.35); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.75rem;">Interests</div>
+      <div class="tag-wrap">
+        <div class="tag">Air-rifle shooting</div>
+        <div class="tag">Swimming</div>
+        <div class="tag">Weight training</div>
+        <div class="tag">Travelling</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="s6">
+    <div class="accent-bar"></div>
+    <div>
+      <div class="slide-label">07 / 07 — Contact</div>
+      <div class="slide-title">Let's connect</div>
+      <div class="slide-sub">Open to finance, operations, and analytics roles</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <a href="mailto:arushmk17@gmail.com" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          </div>
+          arushmk17@gmail.com
+        </a>
+        <a href="tel:+917200861735" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 12 19.79 19.79 0 0 1 1.07 3.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+          </div>
+          +91-7200861735
+        </a>
+        <div class="contact-item" style="cursor:default;">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          Chennai, India
+        </div>
+        <a href="https://www.linkedin.com/in/arushmalathkar" target="_blank" class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          linkedin.com/in/arushmalathkar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="nav-dots" id="dots"></div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="go(-1)">← Prev</button>
+      <button class="nav-btn" onclick="go(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let cur = 0;
+const total = 7;
+const dotsEl = document.getElementById('dots');
+const counter = document.getElementById('counter');
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('button');
+  d.className = 'nav-dot' + (i === 0 ? ' on' : '');
+  d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
+function goTo(n) {
+  document.getElementById('s' + cur).classList.remove('active');
+  dotsEl.children[cur].classList.remove('on');
+  cur = (n + total) % total;
+  document.getElementById('s' + cur).classList.add('active');
+  dotsEl.children[cur].classList.add('on');
+  document.getElementById('prog').style.width = ((cur + 1) / total * 100) + '%';
+  counter.textContent = (cur + 1) + ' / ' + total;
+}
+function go(dir) { goTo(cur + dir); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+});
+</script>
+</body>
+</html>
